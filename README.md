@@ -96,7 +96,7 @@ The dataset used in this project is publicly available on Kaggle:
 
 3. **Update the file path** (if needed) in the data-loading cell so it points to where you saved the dataset, e.g.:
    ```python
-   df = pd.read_csv("data/ecommerce_customers.csv")
+   df = pd.read_csv("data/ecommerce.csv")
    ```
 
 4. **Run the notebook cells in order**, from top to bottom, using `Shift + Enter` on each cell (or select **Run > Run All Cells** from the menu). The notebook is structured to follow the project workflow:
