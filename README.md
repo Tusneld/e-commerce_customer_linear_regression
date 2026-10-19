@@ -52,8 +52,8 @@ The dataset used in this project is publicly available on Kaggle:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
-   cd <your-repo-name>
+   git clone https://github.com/Tusneld/e-commerce_customer_linear_regression.git
+   cd e-commerce_customer_linear_regression
    ```
 
 2. **Create and activate a virtual environment** (recommended)
