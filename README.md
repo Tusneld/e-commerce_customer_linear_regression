@@ -1,4 +1,4 @@
-# E-commerce Spending Prediction Model
+# 🛍️ E-Commerce Spending Prediction Model
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
@@ -9,112 +9,178 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 ![Linear Regression](https://img.shields.io/badge/Linear%20Regression-4CAF50?style=for-the-badge)
 
-## Business Overview
+A Multiple Linear Regression model built in Python to predict annual customer spending for a clothing retailer - enabling data-driven decisions on digital platform investment between a mobile application and a desktop website.
+---
 
-I analyzed data for a clothing store that offers in-person styling appointments. After these sessions, clients can purchase items through either a mobile application or a desktop website. The business needs to determine which platform is driving more value to optimize their digital investments effectively.
+## 📋 Table of Contents
 
-## Problem Statement
+- [Business Overview](#-business-overview)
+- [Problem Statement](#-problem-statement)
+- [Dataset](#-dataset)
+- [Solution & Approach](#-solution--approach)
+- [Model Performance](#-model-performance)
+- [Key Insights](#-key-insights)
+- [Technologies Used](#-technologies-used)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Author](#-author)
 
-The core objective of this project is to predict the **Yearly Amount Spent** by customers. By analyzing their behavior, I aim to provide data-driven insights to help the company decide whether to focus their budget and development efforts on improving the mobile application or the website.
+---
 
-## Solution & Approach
+## 🏢 Business Overview
 
-I developed a **Multiple Linear Regression** model to quantify the relationship between customer engagement metrics and their annual spending. My approach included:
+A clothing retail company offers in-person styling appointments where clients are guided by personal stylists. Following these sessions, customers can browse and purchase items through one of two digital channels - a **mobile application** or a **desktop website**.
 
-- **Exploratory Data Analysis (EDA):** I visualized correlations between numerical variables to identify patterns in user behavior and engagement.
-- **Data Preprocessing:** I split the dataset into training and testing sets using a 70/30 ratio to ensure unbiased model evaluation and prevent overfitting.
-- **Model Training:** I utilized Scikit-Learn to fit the multiple linear regression model to the training data.
-- **Evaluation:** I assessed the model's reliability using performance metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and Residual Analysis to verify that my predictions were accurate and normally distributed.
+The business is at a strategic crossroads: with limited development resources, they need to determine which platform drives greater customer value in order to allocate their digital investment effectively. This project delivers a quantitative answer to that question.
 
-## Tools & Tech Stack
+---
 
-- **Python** - Core programming language.
-- **Pandas & NumPy** - For data manipulation and numerical analysis.
-- **Matplotlib & Seaborn** - For statistical plotting and data visualization.
-- **Scikit-Learn** - For machine learning model implementation.
+## 🎯 Problem Statement
 
-## Dataset
+> *Which digital platform - the mobile app or the website - has a greater influence on how much a customer spends annually, and how accurately can we predict that spending?*
 
-The dataset used in this project is publicly available on Kaggle:
-[Focusing on Mobile App or Website](https://www.kaggle.com/datasets/kolawale/focusing-on-mobile-app-or-website)
+The core objective is to **predict the Yearly Amount Spent** by each customer using behavioural engagement metrics. The resulting model provides both a predictive capability and an interpretable set of coefficients that directly inform the business's platform strategy.
 
-## Repository Structure
+---
+
+## 📊 Dataset
+
+The dataset contains customer-level behavioural and transactional data for the clothing retailer, including the following features:
+
+| Feature | Description |
+|---|---|
+| `Avg. Session Length` | Average duration of in-store styling sessions (minutes) |
+| `Time on App` | Average time spent on the mobile application (minutes/month) |
+| `Time on Website` | Average time spent on the desktop website (minutes/month) |
+| `Length of Membership` | Number of years the customer has been a member |
+| `Yearly Amount Spent` | **Target variable** - total annual spend in USD |
+
+---
+
+## 🔬 Solution & Approach
+
+### 1. Exploratory Data Analysis (EDA)
+Visualised the relationships between all numerical variables using pairplots and a correlation heatmap to identify which engagement metrics exhibit the strongest linear relationships with annual spending. This step surfaced early evidence that membership duration and app usage were the most predictive features.
+
+### 2. Data Preprocessing
+Split the dataset into training and testing sets using a **70/30 ratio** to ensure unbiased model evaluation and reduce the risk of overfitting. Feature and target arrays were isolated prior to model fitting.
+
+### 3. Model Training
+Fitted a **Multiple Linear Regression** model using scikit-learn's `LinearRegression` estimator on the training set. The model learns the weighted contribution of each engagement metric to annual spending.
+
+### 4. Model Evaluation
+Assessed predictive accuracy and model reliability using three complementary evaluation methods:
+
+- **Mean Absolute Error (MAE)** - average magnitude of prediction errors in USD
+- **Mean Squared Error (MSE)** - penalises larger errors more heavily
+- **Residual Analysis** - confirmed that residuals are approximately normally distributed, validating the core assumptions of linear regression and ensuring predictions are statistically sound
+
+---
+
+## 📈 Model Performance
+
+| Metric | Value |
+|---|---|
+| Mean Absolute Error (MAE) | *see notebook* |
+| Mean Squared Error (MSE) | *see notebook* |
+| Root Mean Squared Error (RMSE) | *see notebook* |
+| Residual distribution | Approximately normal - model assumptions satisfied |
+
+> Full evaluation results and visualisations are available in the project notebook.
+
+---
+
+## 💡 Key Insights
+
+Interpreting the model's regression coefficients revealed the following ranked drivers of annual customer revenue:
+
+| Rank | Feature | Business Implication |
+|---|---|---|
+| 1 | **Length of Membership** | The strongest predictor of spend - long-term retention is the highest-value lever |
+| 2 | **Time on App** | Mobile engagement has a significantly positive impact on annual spending |
+| 3 | **Avg. Session Length** | In-store styling sessions contribute meaningfully to overall spend |
+| 4 | **Time on Website** | Notably lower impact - the website is underperforming relative to the mobile app |
+
+### Strategic Recommendation
+
+The analysis provides clear, quantitative evidence to guide platform investment:
+
+- **Prioritise mobile app development** - Time on App is the second-strongest revenue driver. Improving the mobile experience delivers a measurable uplift in annual customer spend.
+- **Investigate the website** - The low coefficient for Time on Website presents a strategic choice: either invest in improving website performance to match the app, or deliberately shift resources toward the mobile channel.
+- **Invest in retention programmes** - Length of Membership is the single strongest predictor of revenue. Customer loyalty initiatives and membership incentives have the highest potential ROI.
+
+This analysis transitions the business from intuition-based decision-making to a strategy backed by quantitative evidence.
+
+---
+
+## 🔧 Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| [Python 3.11](https://www.python.org/) | Core programming language |
+| [Pandas](https://pandas.pydata.org/) | Data loading, manipulation, and feature engineering |
+| [NumPy](https://numpy.org/) | Numerical computation and array operations |
+| [Matplotlib](https://matplotlib.org/) | Statistical plotting and visualisation |
+| [Seaborn](https://seaborn.pydata.org/) | Correlation heatmaps and pairplot analysis |
+| [scikit-learn](https://scikit-learn.org/) | Model training, train/test split, and evaluation metrics |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Tusneld/e-commerce_customer_regression.git
+cd e-commerce_customer_regression
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the notebook
+
+```bash
+jupyter notebook e-commerce_customer_regression.ipynb
+```
+
+---
+
+## 📁 Project Structure
 
 ```
-.
-├── e-commerce_customer_linear_regression.ipynb   # Main analysis notebook
+e-commerce_customer_regression/
+│
 ├── data/
-│   └── ecommerce_customers.csv                   # Dataset (download from Kaggle)
-├── README.md
-└── requirements.txt
+│   └── ecommerce_customers.csv       # Customer behavioural dataset
+│
+├── notebooks/
+│   └── e-commerce_customer_regression.ipynb  # End-to-end analysis notebook
+│
+├── images/
+│   ├── pairplot.png                  # EDA correlation pairplot
+│   ├── heatmap.png                   # Feature correlation heatmap
+│   └── residuals.png                 # Residual distribution plot
+│
+├── requirements.txt                  # Python dependencies
+└── README.md
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 👤 Author
 
-- Python 3.8 or higher
-- Jupyter Notebook or JupyterLab installed
-- A Kaggle account (to download the dataset)
+**Tusnelde Endjala**
+Data Engineer · Data Analyst · Machine Learning Engineer · Software Engineer · Windhoek, Namibia
 
-### Installation
+[![Portfolio](https://img.shields.io/badge/Portfolio-tusnelde.vercel.app-black?style=flat&logo=vercel)](https://tusnelde.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Tusneld-181717?style=flat&logo=github)](https://github.com/Tusneld)
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Tusneld/e-commerce_customer_linear_regression.git
-   cd e-commerce_customer_linear_regression
-   ```
+---
 
-2. **Create and activate a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   ```
+## 📄 License
 
-3. **Install the required dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-   Or install the core packages directly:
-   ```bash
-   pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-   ```
-
-4. **Download the dataset**
-   - Visit the [Kaggle dataset page](https://www.kaggle.com/datasets/kolawale/focusing-on-mobile-app-or-website).
-   - Download the CSV file and place it in a `data/` folder in the project root.
-
-## How to Use the Notebook
-
-1. **Launch Jupyter Notebook** from the project root directory:
-   ```bash
-   jupyter notebook
-   ```
-
-2. **Open the notebook** named `e-commerce_customer_linear_regression.ipynb` from the Jupyter interface.
-
-3. **Update the file path** (if needed) in the data-loading cell so it points to where you saved the dataset, e.g.:
-   ```python
-   df = pd.read_csv("data/ecommerce.csv")
-   ```
-
-4. **Run the notebook cells in order**, from top to bottom, using `Shift + Enter` on each cell (or select **Run > Run All Cells** from the menu). The notebook is structured to follow the project workflow:
-   - **Step 1 - Data Loading & Inspection:** Load the dataset and review its structure, data types, and summary statistics.
-   - **Step 2 - Exploratory Data Analysis (EDA):** Generate pair plots, correlation heatmaps, and scatter plots to explore relationships between engagement metrics (e.g., Time on App, Time on Website, Length of Membership) and Yearly Amount Spent.
-   - **Step 3 - Data Preprocessing:** Define feature variables (X) and the target variable (y), then split the data into training (70%) and testing (30%) sets.
-   - **Step 4 - Model Training:** Fit a Multiple Linear Regression model to the training data using Scikit-Learn.
-   - **Step 5 - Model Evaluation:** Generate predictions on the test set and evaluate performance using MAE, MSE, RMSE, and R² score. Residual plots are included to confirm the residuals are normally distributed.
-   - **Step 6 - Coefficient Interpretation:** Review the model's coefficients to quantify the impact of each feature on Yearly Amount Spent, and visualize feature importance.
-
-5. **Review the outputs** at each step - plots and printed metrics will render inline beneath each cell.
-
-> **Tip:** If you only want to reproduce the final results without re-running the full EDA, scroll to the **Model Training** and **Evaluation** sections and run those cells directly, provided the data has already been loaded and preprocessed in earlier cells.
-
-## Insights & Impact
-
-By interpreting the model's coefficients, I successfully identified that **Length of Membership** is the most significant driver of annual revenue, followed by **Time on App**. Interestingly, the analysis revealed that **Time on Website** has a significantly lower impact compared to the mobile application. These findings allow the business to shift resources toward optimizing the mobile experience, which yields a higher return on investment - effectively transitioning the company from intuitive decision-making to a strategy backed by quantitative evidence.
-
-## Contact
-
-For questions or feedback regarding this project, feel free to reach out or open an issue in this repository.
+This project is open source and available under the [MIT License](LICENSE).
